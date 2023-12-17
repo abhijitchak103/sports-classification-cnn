@@ -38,7 +38,7 @@ cd ..
 This should unzip the required data used in this project to the correct folder structure.
 
 After this, the folder structure would look like this:
-`
+```
 .
 ├── data
 │   ├── test
@@ -61,7 +61,7 @@ After this, the folder structure would look like this:
 ├── requirements.txt
 ├── test.py
 └── utils.py
-`
+```
 
 
 ### USE LOCALLY
