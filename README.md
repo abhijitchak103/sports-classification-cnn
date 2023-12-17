@@ -103,7 +103,7 @@ To test the notebook locally you can use docker or run without docker.
 ```python
 ipython
 import lambda_function
-url = event[{url}] # {url} = url-to-check
+event= {"url": "url-to-check"} # {url} = url-to-check
 lambda_function.lambda_handler(event, None)
 ```
 OR
@@ -114,7 +114,7 @@ When prompted to provide url in both cases, copy the following path:
 
 'https://images.pexels.com/photos/3628912/pexels-photo-3628912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 
-Output should be as follows:
+Output should be similar to the following:
 
 `
 [('cricket', 10.8796835),
@@ -135,7 +135,7 @@ Then in a new terminal, cd to the working directory.
 conda activate project
 python test.py
 ```
-This should give you the following result:
+This should give similar results to the following:
 `[['cricket', 10.8796835],
  ['baseball', 8.193538],
  ['croquet', 7.908885],
@@ -150,6 +150,7 @@ The model yields an accuracy of 93% on test set, which is lower than the benchma
 
 - Fine tune and test with different pre-built models to improve model accuracy.
 - Build a model from scratch without using Transfer Learning
+- Deploy model to AWS Lambda or any other cloud service
 
 ## CONTRIBUTORS
 
