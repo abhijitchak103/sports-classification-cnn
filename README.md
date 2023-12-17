@@ -108,11 +108,9 @@ lambda_function.lambda_handler(event, None)
 ```
 OR
 ```python
-ipython
-import lambda_function
-lambda_function.predict($url) # $url=url-to-check
+python lambda_function.py # $url=url-to-check
 ```
-This should give the following output with url: 
+When prompted to provide url, copy the following path:
 'https://images.pexels.com/photos/3628912/pexels-photo-3628912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 
 `
