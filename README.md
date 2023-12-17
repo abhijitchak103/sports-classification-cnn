@@ -103,15 +103,18 @@ To test the notebook locally you can use docker or run without docker.
 ```python
 ipython
 import lambda_function
-url = event[$url] # $url=url-to-check
+url = event[{url}] # {url} = url-to-check
 lambda_function.lambda_handler(event, None)
 ```
 OR
 ```python
-python lambda_function.py # $url=url-to-check
+python lambda_function.py
 ```
-When prompted to provide url, copy the following path:
+When prompted to provide url in both cases, copy the following path:
+
 'https://images.pexels.com/photos/3628912/pexels-photo-3628912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+
+Output should be as follows:
 
 `
 [('cricket', 10.8796835),
