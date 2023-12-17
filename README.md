@@ -1,12 +1,29 @@
 # SPORTS IMAGE CLASSIFICATION USING TENSORFLOW
 
-## PROJECT OVERVIEW
+## CONTENTS
+
+- [PROJECT OVERVIEW](#project-overview)
+- [ABOUT THE DATASET](#about-the-dataset)
+- [HOW TO USE](#how-to-use)
+ - [CREATE VIRTUAL ENVIORNMENT](#create-virtual-environment)
+ - [TEST NOTEBOOKS](#test-notebooks)
+ - [TRAIN SCRIPT](#train)
+ - [MAKE PREDICTIONS LOCALLY](#use-locally)
+  - [Without Docker](#without-docker)
+  - [With Docker](#docker)
+- [CONCLUSION](#conclusion)
+- [NEXT STEPS](#next-steps)
+- [CONTRIBUTORS](#contributors)
+- [ACKNOWLEDGEMENTS](#acknowledgements)
+- [CONTRIBUTIONS](#contributions)
+
+## [PROJECT OVERVIEW](#project-overview)
 
 This repository is a project dedicated to classifying various sports images to their respective sports using __`Convolutional Neural Networks`__.
 
 We use __`Transfer Learning`__ to utilise prebuilt models on __`imagenet`__ dataset and try to improve on their performance using fine-tuning techniques.
 
-## ABOUT THE DATASET
+## [ABOUT THE DATASET](#about-the-dataset)
 
 The dataset used for the project, contains images from 100 different kinds of sports and is already split into train, valid and test sets to make life a bit easier. The dataset has been copied from a __`kaggle`__ source.
 
@@ -14,7 +31,7 @@ Link to the dataset: (https://www.kaggle.com/datasets/gpiosenka/sports-classific
 
 Contains: 13493 train, 500 test, 500 validate images.
 
-## HOW TO USE
+## [HOW TO USE](#how-to-use)
 
 First and foremost, clone the repository to your local using:
 
@@ -53,17 +70,19 @@ After this, the folder structure would look like this:
 │   ├── mobilenetv2_v5_aug_height_16_0.922.h5
 │   ├── mobilenetv2_v6_aug_rot_17_0.920.h5
 │   ├── mobilenetv2_v7_17_0.912.h5
-│   └── prediction.tflite
 ├── notebooks
 │   ├── model-converter.ipynb
 │   ├── sports-classification.ipynb
 │   └── test.ipynb
 ├── requirements.txt
+├── tflite_runtime-2.4.4-cp38-cp38-linux_x86_64.whl
 ├── test.py
-└── utils.py
+├── train.py
+├── utils.py
+└── prediction.tflite
 ```
 
-### CREATE VIRTUAL ENVIRONMENT
+### [CREATE VIRTUAL ENVIRONMENT](#create-virtual-environment)
 
 To run the project and to test out notebooks, you can create a new virtual environment using a framework of your choice. eg.
 ```
@@ -75,7 +94,7 @@ Once you activate the venv, install the dependencies:
 pip install -r requirements.txt
 ```
 
-### TEST NOTEBOOKS
+### [TEST NOTEBOOKS](#test-notebooks)
 
 To test out the notebooks and rerun the entire thing, you can run all. Keep in mind, this is will be time-taking. 
 To do the same:
@@ -85,7 +104,7 @@ jupyter notebook
 `
 In the web browser, the jupyter notebook environment should be open. Open the notebooks folder, and open `sports-classification.ipynb` to test it.
 
-### TRAIN SCRIPT
+### [TRAIN SCRIPT](#train)
 
 A python file has been provided to test out and train the network on the data provided. To do the same, simply activate the environment, and run train.py
 
@@ -94,11 +113,11 @@ conda activate project
 python train.py
 ```
 
-### MAKE PREDICTIONS LOCALLY
+### [MAKE PREDICTIONS LOCALLY](#use-locally)
 
 To test the notebook locally you can use docker or run without docker.
 
-#### Without Docker
+#### [Without Docker](#without-docker)
 
 ```python
 ipython
@@ -124,7 +143,7 @@ Output should be similar to the following:
  ('golf', 5.5249014)]
 `
 
-#### With Docker
+#### [With Docker](#docker)
 
 ```
 docker build -t sports .
@@ -142,26 +161,26 @@ This should give similar results to the following:
  ['football', 6.1987066],
  ['golf', 5.5249014]]`
 
-## CONCLUSION
+## [CONCLUSION](#conclusion)
 
 The model yields an accuracy of 93% on test set, which is lower than the benchmark 95%. 
 
-## NEXT STEPS
+## [NEXT STEPS](#next-steps)
 
 - Fine tune and test with different pre-built models to improve model accuracy.
 - Build a model from scratch without using Transfer Learning
 - Deploy model to AWS Lambda or any other cloud service
 
-## CONTRIBUTORS
+## [CONTRIBUTORS](#contributors)
 
 Abhijit Chakraborty (ab.chakraborty@outlook.com)
 
-## ACKNOWLEDGEMENTS
+## [ACKNOWLEDGEMENTS](#acknowledgements)
 
 - [Alexey Grigorev](https://github.com/alexeygrigorev)
 - [DataTalks.Club](https://datatalks.club/)
 
-## CONTRIBUTIONS
+## [CONTRIBUTIONS](#contributions)
 
 All sorts of contributions and ideas are welcome to add on to the current project and improve the models. Any feedback received will be highly appreciated.
 
