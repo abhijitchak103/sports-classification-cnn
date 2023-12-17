@@ -125,17 +125,21 @@ This should give the following output with url:
 
 #### With Docker
 
-`
+```
 docker build -t sports .
 docker run -it --rm -p 8080:8080 sports
-`
+```
 Then in a new terminal, cd to the working directory.
-`
+```
 conda activate project
 python test.py
-`
+```
 This should give you the following result:
-`['cricket', 10.8796835]`
+`[['cricket', 10.8796835],
+ ['baseball', 8.193538],
+ ['croquet', 7.908885],
+ ['football', 6.1987066],
+ ['golf', 5.5249014]]`
 
 ## CONCLUSION
 
