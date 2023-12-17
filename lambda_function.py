@@ -50,3 +50,8 @@ def lambda_handler(event, context):
     result = predict(url)
 
     return result
+
+if __name__=='__main__':
+    image_url = input("Enter an url for a sports image:" )
+    event = {"url": str(image_url)}
+    print(lambda_handler(event, None))
