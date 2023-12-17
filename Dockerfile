@@ -1,8 +1,11 @@
 FROM public.ecr.aws/lambda/python:3.8
 
-RUN pip install https://github.com/alexeygrigorev/tflite-aws-lambda/raw/main/tflite/tflite_runtime-2.4.4-cp38-cp38-linux_x86_64.whl
+COPY tflite_runtime-2.4.4-cp38-cp38-linux_x86_64.whl .
 
-COPY "models/prediction.tflite" .
+RUN pip install keras-image-helper
+RUN pip install tflite_runtime-2.4.4-cp38-cp38-linux_x86_64.whl --user
+
+COPY prediction.tflite .
 COPY lambda_function.py .
 COPY utils.py .
 

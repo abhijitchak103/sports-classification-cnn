@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import tensorflow.lite as tflite
+import tflite_runtime.interpreter as tflite
+from io import BytesIO
+from urllib import request
+from PIL import Image
+import numpy as np
 
 from utils import load_preprocess_img
 
@@ -21,22 +25,25 @@ classes = ['airhockey', 'amputefootball', 'archery', 'armwrestling', 'axethrowin
 
 #url = 'https://images.pexels.com/photos/3628912/pexels-photo-3628912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 
+interpreter = tflite.Interpreter(model_path='prediction.tflite')
+interpreter.allocate_tensors()
+
+input_index = interpreter.get_input_details()[0]['index']
+output_index = interpreter.get_output_details()[0]['index']
+
 def predict(url):
 
     X = load_preprocess_img(url)
-
-    interpreter = tflite.Interpreter(model_path='../models/prediction.tflite')
-    interpreter.allocate_tensors()
-
-    input_index = interpreter.get_input_details()[0]['index']
-    output_index = interpreter.get_output_details()[0]['index']
 
     interpreter.set_tensor(input_index, X)
     interpreter.invoke()
     preds = interpreter.get_tensor(output_index)
 
-    return sorted(zip(classes, preds.squeeze()), key=lambda x:-x[1])[:5]
+    float_pred = preds[0].tolist()
 
+    return sorted(zip(classes, float_pred), key=lambda x:-x[1])[:5]
+
+# preds.squeeze().to_list()
 
 def lambda_handler(event, context):
     url = event['url']

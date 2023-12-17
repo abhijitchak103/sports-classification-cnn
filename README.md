@@ -63,8 +63,31 @@ After this, the folder structure would look like this:
 └── utils.py
 ```
 
+### CREATE VIRTUAL ENVIRONMENT
 
-### USE LOCALLY
+To run the project and to test out notebooks, you can create a new virtual environment using a framework of your choice. eg.
+`
+conda create -n project python==3.8 -y
+conda activate project
+`
+Once you activate the venv, install the dependencies:
+`
+pip install -r requirements.txt
+`
+
+### TEST NOTEBOOKS
+
+To test out the notebooks and rerun the entire thing, you can run all. Keep in mind, this is will be time-taking. 
+To do the same:
+
+`
+jupyter notebook
+`
+In the web browser, the jupyter notebook environment should be open. Open the notebooks folder, and open `sports-classification.ipynb` to test it.
+
+### MAKE PREDICTIONS LOCALLY
+
+To test the notebook locally you can use docker or run without docker.
 
 #### Without Docker
 
@@ -80,4 +103,47 @@ ipython
 import lambda_function
 lambda_function.predict($url) # $url=url-to-check
 ```
+This should give the following output with url: 
+'https://images.pexels.com/photos/3628912/pexels-photo-3628912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+
+`
+[('cricket', 10.8796835),
+ ('baseball', 8.193538),
+ ('croquet', 7.908885),
+ ('football', 6.1987066),
+ ('golf', 5.5249014)]
+`
+
 #### With Docker
+
+`
+docker build -t sports .
+docker run -it --rm -p 8080:8080 sports
+`
+Then in a new terminal, cd to the working directory.
+`
+python test.py
+`
+
+## CONCLUSION
+
+The model yields an accuracy of 93% on test set, which is lower than the benchmark 95%. 
+
+## NEXT STEPS
+
+- Fine tune and test with different pre-built models to improve model accuracy.
+- Build a model from scratch without using Transfer Learning
+
+## CONTRIBUTORS
+
+Abhijit Chakraborty (ab.chakraborty@outlook.com)
+
+## ACKNOWLEDGEMENTS
+
+- [Alexey Grigorev](https://github.com/alexeygrigorev)
+- [DataTalks.Club](https://datatalks.club/)
+
+## CONTRIBUTIONS
+
+All sorts of contributions and ideas are welcome to add on to the current project and improve the models. Any feedback received will be highly appreciated.
+
