@@ -85,6 +85,15 @@ jupyter notebook
 `
 In the web browser, the jupyter notebook environment should be open. Open the notebooks folder, and open `sports-classification.ipynb` to test it.
 
+### TRAIN SCRIPT
+
+A python file has been provided to test out and train the network on the data provided. To do the same, simply activate the environment, and run train.py
+
+`
+conda activate project
+python train.py
+`
+
 ### MAKE PREDICTIONS LOCALLY
 
 To test the notebook locally you can use docker or run without docker.

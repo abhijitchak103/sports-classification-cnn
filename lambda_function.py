@@ -9,7 +9,7 @@ import numpy as np
 
 from utils import load_preprocess_img
 
-#path = '../data/test/baseball/4.jpg'
+#path = 'data/test/baseball/4.jpg'
 
 
 classes = ['airhockey', 'amputefootball', 'archery', 'armwrestling', 'axethrowing', 'balancebeam', 'barellracing', 'baseball', 'basketball',
