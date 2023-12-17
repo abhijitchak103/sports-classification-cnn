@@ -2,7 +2,6 @@
 
 grpcio=1.32.0=pypi_0
 matplotlib=3.6.0=pypi_0
-numpy=1.19.2=pypi_0
 pillow=10.1.0=pypi_0
 protobuf=3.20.3=pypi_0
 python=3.8.0=h0371630_2
@@ -10,3 +9,5 @@ requests=2.31.0=pypi_0
 scipy=1.8.0=pypi_0
 tensorflow=2.4.4=pypi_0
 gunicorn
+numpy=1.24.4=pypi_0
+tflite-runtime
