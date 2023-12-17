@@ -122,8 +122,11 @@ docker run -it --rm -p 8080:8080 sports
 `
 Then in a new terminal, cd to the working directory.
 `
+conda activate project
 python test.py
 `
+This should give you the following result:
+`['cricket', 10.8796835]`
 
 ## CONCLUSION
 
