@@ -66,14 +66,14 @@ After this, the folder structure would look like this:
 ### CREATE VIRTUAL ENVIRONMENT
 
 To run the project and to test out notebooks, you can create a new virtual environment using a framework of your choice. eg.
-`
+```
 conda create -n project python==3.8 -y
 conda activate project
-`
+```
 Once you activate the venv, install the dependencies:
-`
+```
 pip install -r requirements.txt
-`
+```
 
 ### TEST NOTEBOOKS
 
@@ -89,10 +89,10 @@ In the web browser, the jupyter notebook environment should be open. Open the no
 
 A python file has been provided to test out and train the network on the data provided. To do the same, simply activate the environment, and run train.py
 
-`
+```
 conda activate project
 python train.py
-`
+```
 
 ### MAKE PREDICTIONS LOCALLY
 
