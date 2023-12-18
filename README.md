@@ -184,7 +184,6 @@ The model yields an accuracy of 93% on test set, which is lower than the benchma
 
 - Fine tune and test with different pre-built models to improve model accuracy.
 - Build a model from scratch without using Transfer Learning
-- Deploy model to AWS Lambda or any other cloud service
 
 ## [CONTRIBUTORS](#contributors)
 
