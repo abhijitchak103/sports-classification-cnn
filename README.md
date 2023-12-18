@@ -11,6 +11,7 @@
  - [MAKE PREDICTIONS LOCALLY](#use-locally)
   - [Without Docker](#without-docker)
   - [With Docker](#docker)
+- [CLOUD SERVING](#cloud-serving)
 - [CONCLUSION](#conclusion)
 - [NEXT STEPS](#next-steps)
 - [CONTRIBUTORS](#contributors)
@@ -160,6 +161,20 @@ This should give similar results to the following:
  ['croquet', 7.908885],
  ['football', 6.1987066],
  ['golf', 5.5249014]]`
+
+### [CLOUD SERVING](#cloud-serving)
+
+The model has been served in AWS cloud using Python Lambda and AWS REST API. For this first, the docker image has been
+published to AWS ECR and then used for creating a lambda function which then is used as a REST API.
+
+Below are some of the images which show the REST Api endpoint and it's usage.
+
+![REST-API Endpoint](images/api-endpoint.JPG)
+
+![API USAGE](images/using-api-endpoint.JPG)
+
+The AWS link will be not be functioning, hence provided the images above. If images, not loading please find the same in 
+`images` folder.
 
 ## [CONCLUSION](#conclusion)
 
