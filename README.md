@@ -4,12 +4,12 @@
 
 - [PROJECT OVERVIEW](#project-overview)
 - [ABOUT THE DATASET](#about-the-dataset)
+- [PRE-REQUISITES](#pre-requisites)
 - [HOW TO USE](#how-to-use)
  - [CREATE VIRTUAL ENVIORNMENT](#create-virtual-environment)
  - [TEST NOTEBOOKS](#test-notebooks)
  - [TRAIN SCRIPT](#train)
- - [MAKE PREDICTIONS LOCALLY](#use-locally)
-  - [Without Docker](#without-docker)
+ - [MAKE PREDICTIONS](#make-predictions)
   - [With Docker](#docker)
 - [CLOUD SERVING](#cloud-serving)
 - [CONCLUSION](#conclusion)
@@ -32,18 +32,31 @@ Link to the dataset: (https://www.kaggle.com/datasets/gpiosenka/sports-classific
 
 Contains: 13493 train, 500 test, 500 validate images.
 
+## [PRE-REQUISITES](#pre-requisites)
+
+```
+git
+linux / WSL2
+miniconda
+python
+docker
+awscli
+kaggle account
+```
+
 ## [HOW TO USE](#how-to-use)
 
 First and foremost, clone the repository to your local using:
 
 `git clone https://github.com/abhijitchak103/sports-classification-cnn.git`
 
-To download the dataset, you can download the zip file and unzip manually to `/data` folder in your local copy of this repo or use the Terminal to help you with it.
+To download the dataset, you can download the zip file from `kaggle` and unzip manually to `/data` folder in your local copy of this repo or use the Terminal to help you with it.
 
-First of all, make sure you have copied your kaggle key from account to your local directory in the folder: 
+Make sure you have copied your kaggle key `kaggle.json` from account to your local directory in the folder: 
 `C:\Users\{user}\.kaggle`
 
-Then change to the directory where you cloned the repo using `cd`.
+Then change to the directory where you cloned the repo using `cd` and follow the following commands:
+
 ```
 kaggle datasets download -d gpiosenka/sports-classification
 unzip sports-classification.zip -d data
@@ -63,24 +76,27 @@ After this, the folder structure would look like this:
 │   ├── train
 │   ├── valid
 │   └── sports.csv
-├── Dockerfile
-├── README.md
-├── .gitignore
-├── lambda_function.py
+├── images
+│   ├── api-endpoint.JPG
+│   └── using-api-endpoint.JPG
 ├── models
 │   ├── mobilenetv2_v5_aug_height_16_0.922.h5
 │   ├── mobilenetv2_v6_aug_rot_17_0.920.h5
-│   ├── mobilenetv2_v7_17_0.912.h5
+│   └── mobilenetv2_v7_17_0.912.h5
 ├── notebooks
 │   ├── model-converter.ipynb
 │   ├── sports-classification.ipynb
 │   └── test.ipynb
+├── .gitignore
+├── Dockerfile
+├── lambda_function.py
+├── prediction.tflite
+├── README.md
 ├── requirements.txt
-├── tflite_runtime-2.4.4-cp38-cp38-linux_x86_64.whl
 ├── test.py
+├── tflite_runtime-2.4.4-cp38-cp38-linux_x86_64.whl
 ├── train.py
-├── utils.py
-└── prediction.tflite
+└── utils.py
 ```
 
 ### [CREATE VIRTUAL ENVIRONMENT](#create-virtual-environment)
@@ -97,52 +113,26 @@ pip install -r requirements.txt
 
 ### [TEST NOTEBOOKS](#test-notebooks)
 
-To test out the notebooks and rerun the entire thing, you can run all. Keep in mind, this is will be time-taking. 
+To test out the notebooks and rerun the entire notebook, you can do so. Keep in mind, this is will be time-taking. 
 To do the same:
 
 `
 jupyter notebook
 `
-In the web browser, the jupyter notebook environment should be open. Open the notebooks folder, and open `sports-classification.ipynb` to test it.
+In the web browser, the jupyter notebook environment should open. Open the notebooks folder, and open `sports-classification.ipynb` to test it.
 
 ### [TRAIN SCRIPT](#train)
 
-A python file has been provided to test out and train the network on the data provided. To do the same, simply activate the environment, and run train.py
+A python file has been provided to test out and train the network on the data provided. To do the same, simply activate the environment if not active yet, and run train.py
 
 ```
 conda activate project
 python train.py
 ```
 
-### [MAKE PREDICTIONS LOCALLY](#use-locally)
+### [MAKE PREDICTIONS](#make-predictions)
 
-To test the notebook locally you can use docker or run without docker.
-
-#### [Without Docker](#without-docker)
-
-```python
-ipython
-import lambda_function
-event= {"url": "url-to-check"} # {url} = url-to-check
-lambda_function.lambda_handler(event, None)
-```
-OR
-```python
-python lambda_function.py
-```
-When prompted to provide url in both cases, copy the following path:
-
-'https://images.pexels.com/photos/3628912/pexels-photo-3628912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-
-Output should be similar to the following:
-
-`
-[('cricket', 10.8796835),
- ('baseball', 8.193538),
- ('croquet', 7.908885),
- ('football', 6.1987066),
- ('golf', 5.5249014)]
-`
+To test the notebook locally you can use docker.
 
 #### [With Docker](#docker)
 
@@ -152,7 +142,6 @@ docker run -it --rm -p 8080:8080 sports
 ```
 Then in a new terminal, cd to the working directory.
 ```
-conda activate project
 python test.py
 ```
 This should give similar results to the following:
